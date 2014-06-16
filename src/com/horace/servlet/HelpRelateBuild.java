@@ -2,16 +2,17 @@ package com.horace.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class UserLogin extends HttpServlet
+public class HelpRelateBuild extends HttpServlet
 {
-
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
@@ -23,39 +24,25 @@ public class UserLogin extends HttpServlet
 	{
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
+
 		String user_id = request.getParameter("user_id");
-		String user_password = request.getParameter("user_password");
+		String help_id = request.getParameter("help_id");
 		
-		String sqlstr = "Select * from Users where user_id = '" + user_id + "' and user_password = '" + user_password + "'";
+		Date now = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		String relate_time = sdf.format(now);
 		
+		String sqlstr = "Insert into HelpRelate Set relate_time = '" + relate_time + "', user_id = '" +
+						user_id + "', help_id = '" + help_id + "'";
 		DataBaseController dbc = new DataBaseController();
 		dbc.DataBaseExcute(sqlstr);
 		
-		try
-		{
-			if(!dbc.getRs().next())
-			{// Èç¹û½á¹û¼¯Îª¿Õ£¬ÔòµÇÂ¼Ê§°Ü
-				response.setStatus(400);	// ÏìÓ¦×´Ì¬ÂëÎª400£¬µÇÂ¼Ê§°Ü
-				out.print("µÇÂ¼Ê§°Ü£¡");
-			}
-			else
-			{
-				dbc.getRs().beforeFirst();	
-				ArrayList<SHUser> arl = (new SHUser()).ToArray(dbc.getRs());
-				String json = (new JSONExchange()).JSONFromArray(arl);
-				
-				response.setStatus(200);
-				out.print(json);
-				System.out.println("ÓÃ»§£¨" + user_id + "£©µÇÂ¼");
-			}
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		ArrayList<HelpRelate> arl = (new HelpRelate()).toArray(dbc.getRs());
+		String json = (new JSONExchange()).JSONFromArray(arl);
 		
-		dbc.Close();
+		out.print(json);
+		response.setStatus(200);
+		
 		out.flush();
 		out.close();
 	}

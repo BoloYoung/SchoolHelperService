@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class UserLogin extends HttpServlet
+public class HelpSelectSelf extends HttpServlet
 {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,37 +25,17 @@ public class UserLogin extends HttpServlet
 		PrintWriter out = response.getWriter();
 		
 		String user_id = request.getParameter("user_id");
-		String user_password = request.getParameter("user_password");
 		
-		String sqlstr = "Select * from Users where user_id = '" + user_id + "' and user_password = '" + user_password + "'";
-		
+		String sqlstr = "Select * from Help where user_id = '" + user_id + "' order by help_time DESC";
 		DataBaseController dbc = new DataBaseController();
 		dbc.DataBaseExcute(sqlstr);
 		
-		try
-		{
-			if(!dbc.getRs().next())
-			{// Èç¹û½á¹û¼¯Îª¿Õ£¬ÔòµÇÂ¼Ê§°Ü
-				response.setStatus(400);	// ÏìÓ¦×´Ì¬ÂëÎª400£¬µÇÂ¼Ê§°Ü
-				out.print("µÇÂ¼Ê§°Ü£¡");
-			}
-			else
-			{
-				dbc.getRs().beforeFirst();	
-				ArrayList<SHUser> arl = (new SHUser()).ToArray(dbc.getRs());
-				String json = (new JSONExchange()).JSONFromArray(arl);
-				
-				response.setStatus(200);
-				out.print(json);
-				System.out.println("ÓÃ»§£¨" + user_id + "£©µÇÂ¼");
-			}
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		ArrayList<SHHelp> arl = (new SHHelp()).toArray(dbc.getRs());
+		String json = (new JSONExchange()).JSONFromArray(arl);
 		
-		dbc.Close();
+		out.print(json);
+		response.setStatus(200);
+		
 		out.flush();
 		out.close();
 	}

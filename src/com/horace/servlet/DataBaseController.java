@@ -27,7 +27,7 @@ public class DataBaseController
 			// 加载驱动
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			// 创建连接实例
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=LibrarySystem","sa","sa");
+			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=SchoolHelper","sa","sa");
 			// 获取用于向sql发送命令的statement
 			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		}

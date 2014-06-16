@@ -9,10 +9,64 @@
     <servlet-name>UserLogin</servlet-name>
     <servlet-class>com.horace.servlet.UserLogin</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserModify</servlet-name>
+    <servlet-class>com.horace.servlet.UserModify</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HelpAdd</servlet-name>
+    <servlet-class>com.horace.servlet.HelpAdd</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HelpSelect</servlet-name>
+    <servlet-class>com.horace.servlet.HelpSelect</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HelpSelectSelf</servlet-name>
+    <servlet-class>com.horace.servlet.HelpSelectSelf</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HelpRelateBuild</servlet-name>
+    <servlet-class>com.horace.servlet.HelpRelateBuild</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserSelect</servlet-name>
+    <servlet-class>com.horace.servlet.UserSelect</servlet-class>
+  </servlet>
+
+
+
+
+
+
 
   <servlet-mapping>
     <servlet-name>UserLogin</servlet-name>
     <url-pattern>/UserLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserModify</servlet-name>
+    <url-pattern>/UserModify</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HelpAdd</servlet-name>
+    <url-pattern>/HelpAdd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HelpSelect</servlet-name>
+    <url-pattern>/HelpSelect</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HelpSelectSelf</servlet-name>
+    <url-pattern>/HelpSelectSelf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HelpRelateBuild</servlet-name>
+    <url-pattern>/HelpRelateBuild</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserSelect</servlet-name>
+    <url-pattern>/UserSelect</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
