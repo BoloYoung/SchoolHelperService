@@ -24,7 +24,7 @@ public class DataBaseController
 	{
 		try
 		{
-			// 加载驱动
+			// 加载驱动 加
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			// 创建连接实例
 			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=SchoolHelper","sa","sa");
