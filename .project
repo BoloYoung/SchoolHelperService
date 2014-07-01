@@ -55,11 +55,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>学生互助平台需求分析（4.11）.doc</name>
-			<type>1</type>
-			<location>D:/Desktop/Project/WebProject/SchoolHelper/学生互助平台需求分析（4.11）.doc</location>
-		</link>
-	</linkedResources>
 </projectDescription>
